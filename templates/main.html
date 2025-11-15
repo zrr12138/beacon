@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beacon</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 span {
+            font-weight: normal;
+            font-size: 0.8em;
+            margin-left: 20px;
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 400px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: none;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .resources {
+            margin-bottom: 20px;
+        }
+        .resources h3 {
+            margin-bottom: 5px;
+        }
+        .resources p {
+            margin: 5px 0;
+        }
+        #current-time {
+            font-weight: bold;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>欢迎回来 {{ .Username }}! <span>城池: 我的城池 坐标 (100,100)</span></h1>
+
+<table>
+    <thead>
+    <tr>
+        <td>建筑</td>
+        <td>招募</td>
+        <td>地图</td>
+        <td>出兵</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>XX</td>
+        <td>XX</td>
+        <td>XX</td>
+        <td>XX</td>
+    </tr>
+    <tr>
+        <td>XX</td>
+        <td>XX</td>
+        <td>XX</td>
+        <td>XX</td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="resources">
+    <h3>资源：</h3>
+    <p>木材 100/2000</p>
+    <p>石头 100/2000</p>
+    <p>铁矿 200/2000</p>
+    <p>粮食 300/5000</p>
+    <p>金币：2000</p>
+</div>
+
+<div>
+    <p>当前时间: <span id="current-time">Loading...</span></p>
+</div>
+
+<p><a href="/logout">注销</a></p>
+
+<script>
+    function updateTime() {
+        try {
+            const now = new Date();
+            const timeString = now.toLocaleString('zh-CN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+
+            document.getElementById('current-time').textContent = timeString;
+        } catch (e) {
+            document.getElementById('current-time').textContent = 'Error loading time.';
+        }
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+</script>
+
+</body>
+</html>
