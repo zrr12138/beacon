@@ -1,0 +1,106 @@
+<!-- templates/architecture.html -->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>烽火战国 - 建筑系统</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .header {
+            background: #4a6fa5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .resources {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .resource-item {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .building-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+        .building-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .building-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+        .upgrade-btn {
+            margin-top: 10px;
+            padding: 6px 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .upgrade-btn:hover {
+            background: #45a049;
+        }
+        .upgrading {
+            opacity: 0.6;
+            background: #eee;
+        }
+        .upgrading .upgrade-btn {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h2>🏰 建筑系统</h2>
+</div>
+
+<!-- 显示资源 -->
+<div class="resources">
+    <div class="resource-item">🪵 木材: {{.Resource.Wood}}</div>
+    <div class="resource-item">🧱 石头: {{.Resource.Stone}}</div>
+    <div class="resource-item">💰 金币: {{.Resource.Gold}}</div>
+    <div class="resource-item">🌾 粮草: {{.Resource.Food}}</div>
+</div>
+
+<!-- 显示建筑 -->
+<h3>我的建筑</h3>
+<div class="building-grid">
+    {{range .Buildings}}
+    <div class="building-card {{if .IsUpgrading}}upgrading{{end}}">
+        <div class="building-title">{{.Type}}</div>
+        <div>等级: {{.Level}}</div>
+        {{if .IsUpgrading}}
+        <div style="color: orange; margin-top: 8px;">⏳ 升级中...</div>
+        {{else}}
+        <form method="POST" action="/upgrade_building">
+            <input type="hidden" name="building_id" value="{{.ID}}">
+            <button type="submit" class="upgrade-btn">升级</button>
+        </form>
+        {{end}}
+    </div>
+    {{end}}
+</div>
+
+<a href="/beacon/main">← 返回</a>
+
+</body>
+</html>

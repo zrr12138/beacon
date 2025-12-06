@@ -1,0 +1,13 @@
+2025-11-19 17:32:15.734339	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type='table' AND name="users"] affect rows num [-1]
+2025-11-19 17:32:15.749854	INFO	gorm@v1.31.1/finisher_api.go:545	execute [SELECT sql FROM sqlite_master WHERE type IN ("table","index") AND tbl_name = "users" AND sql IS NOT NULL order by type = "table" desc] affect rows num [2]
+2025-11-19 17:32:15.749854	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` LIMIT 1] affect rows num [-1]
+2025-11-19 17:32:15.750388	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type = "index" AND tbl_name = "users" AND name = "idx_users_deleted_at"] affect rows num [-1]
+2025-11-19 17:33:23.319345	INFO	beaconImp/http_handler.go:125	User wap logged out.
+2025-11-19 17:33:26.516879	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` WHERE username = "abc" AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1] affect rows num [1]
+2025-11-19 17:33:27.439305	INFO	beaconImp/http_handler.go:118	User abc logged in.
+2025-11-19 17:35:49.891288	INFO	beaconImp/http_handler.go:125	User abc logged out.
+2025-11-19 17:36:36.604777	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` WHERE username = "abc" AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1] affect rows num [1]
+2025-11-19 17:36:37.451399	INFO	beaconImp/http_handler.go:118	User abc logged in.
+2025-11-19 17:36:59.299584	INFO	beaconImp/http_handler.go:125	User abc logged out.
+2025-11-19 17:37:02.766363	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` WHERE username = "abc" AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1] affect rows num [1]
+2025-11-19 17:37:03.696570	INFO	beaconImp/http_handler.go:118	User abc logged in.

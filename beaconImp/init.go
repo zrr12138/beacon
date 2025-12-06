@@ -18,6 +18,12 @@ func (B *Beacon) Init() {
 	if err != nil {
 		log.Fatal("Failed to migrate database:", err)
 	}
+
+	err = B.db.AutoMigrate(&User{}, &Resource{}, &Building{})
+	if err != nil {
+		log.Fatal("Failed to migrate database:", err)
+	}
+
 	B.r = gin.Default()
 	B.r.LoadHTMLGlob("templates/*.html")
 	B.RegisterHttpHandler()

@@ -6,4 +6,5 @@ func main() {
 	beacon := beaconImp.Beacon{}
 	beacon.Init()
 	beacon.Start()
+
 }

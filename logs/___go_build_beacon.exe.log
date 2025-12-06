@@ -1,0 +1,9 @@
+2025-11-19 17:27:59.239637	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type='table' AND name="users"] affect rows num [-1]
+2025-11-19 17:27:59.260460	INFO	gorm@v1.31.1/finisher_api.go:545	execute [SELECT sql FROM sqlite_master WHERE type IN ("table","index") AND tbl_name = "users" AND sql IS NOT NULL order by type = "table" desc] affect rows num [2]
+2025-11-19 17:27:59.260460	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` LIMIT 1] affect rows num [-1]
+2025-11-19 17:27:59.260460	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type = "index" AND tbl_name = "users" AND name = "idx_users_deleted_at"] affect rows num [-1]
+2025-11-19 17:29:06.613572	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` WHERE username = "wap" AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1] affect rows num [0]
+2025-11-19 17:29:07.543431	INFO	gorm@v1.31.1/callbacks.go:140	execute [INSERT INTO `users` (`created_at`,`updated_at`,`deleted_at`,`username`,`password`) VALUES ("2025-11-19 17:29:07.529","2025-11-19 17:29:07.529",NULL,"wap","$2a$14$nSsIrJE5GEgxHwCLPRYYvOAxBU3bs8GgXQMry9FAsPJFrCSrr0hVC") RETURNING `id`] affect rows num [1]
+2025-11-19 17:29:07.543431	INFO	beaconImp/http_handler.go:89	New user registered: wap
+2025-11-19 17:29:13.790211	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` WHERE username = "wap" AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1] affect rows num [1]
+2025-11-19 17:29:14.714317	INFO	beaconImp/http_handler.go:118	User wap logged in.

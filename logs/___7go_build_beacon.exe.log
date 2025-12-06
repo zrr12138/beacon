@@ -1,0 +1,7 @@
+2025-11-26 15:57:47.289044	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type='table' AND name="users"] affect rows num [-1]
+2025-11-26 15:57:47.312115	INFO	gorm@v1.31.1/finisher_api.go:545	execute [SELECT sql FROM sqlite_master WHERE type IN ("table","index") AND tbl_name = "users" AND sql IS NOT NULL order by type = "table" desc] affect rows num [2]
+2025-11-26 15:57:47.312652	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` LIMIT 1] affect rows num [-1]
+2025-11-26 15:57:47.312652	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type = "index" AND tbl_name = "users" AND name = "idx_users_deleted_at"] affect rows num [-1]
+2025-11-26 15:57:48.627075	ERROR	beaconImp/http_handler.go:20	Auth failed, redirecting to login.
+2025-11-26 15:57:53.040130	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` WHERE username = "abc" AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1] affect rows num [1]
+2025-11-26 15:57:53.914348	INFO	beaconImp/http_handler.go:119	User abc logged in.

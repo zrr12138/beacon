@@ -1,0 +1,17 @@
+2025-11-15 21:53:48.639160	FATAL	beaconImp/init.go:15	Failed to connect database:Binary was compiled with 'CGO_ENABLED=0', go-sqlite3 requires cgo to work. This is a stub
+2025-11-15 22:06:46.865639	FATAL	beaconImp/init.go:15	Failed to connect database:Binary was compiled with 'CGO_ENABLED=0', go-sqlite3 requires cgo to work. This is a stub
+2025-11-15 22:31:27.387844	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type='table' AND name="users"] affect rows num [-1]
+2025-11-15 22:31:27.406404	INFO	gorm@v1.31.1/callbacks.go:140	execute [CREATE TABLE `users` (`id` integer PRIMARY KEY AUTOINCREMENT,`created_at` datetime,`updated_at` datetime,`deleted_at` datetime,`username` text,`password` text,CONSTRAINT `uni_users_username` UNIQUE (`username`))] affect rows num [0]
+2025-11-15 22:31:27.409725	INFO	gorm@v1.31.1/callbacks.go:140	execute [CREATE INDEX `idx_users_deleted_at` ON `users`(`deleted_at`)] affect rows num [0]
+2025-11-15 22:32:24.885201	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` WHERE username = "abc" AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1] affect rows num [0]
+2025-11-15 22:32:25.751010	INFO	gorm@v1.31.1/callbacks.go:140	execute [INSERT INTO `users` (`created_at`,`updated_at`,`deleted_at`,`username`,`password`) VALUES ("2025-11-15 22:32:25.747","2025-11-15 22:32:25.747",NULL,"abc","$2a$14$jmQ/.kZDx/rb8AXeceElNORp3NSDcGDyWV2DfFACWHWSVvyWTuWD6") RETURNING `id`] affect rows num [1]
+2025-11-15 22:32:25.751010	INFO	beaconImp/http_handler.go:90	New user registered: abc
+2025-11-15 22:32:36.039593	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` WHERE username = "a" AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1] affect rows num [0]
+2025-11-15 22:32:36.039593	INFO	beaconImp/http_handler.go:102	Login attempt failed for a: record not found
+2025-11-15 22:32:43.799463	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` WHERE username = "abc" AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1] affect rows num [1]
+2025-11-15 22:32:44.658032	INFO	beaconImp/http_handler.go:119	User abc logged in.
+2025-11-19 17:36:14.049241	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type='table' AND name="users"] affect rows num [-1]
+2025-11-19 17:36:14.063557	INFO	gorm@v1.31.1/finisher_api.go:545	execute [SELECT sql FROM sqlite_master WHERE type IN ("table","index") AND tbl_name = "users" AND sql IS NOT NULL order by type = "table" desc] affect rows num [2]
+2025-11-19 17:36:14.063557	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` LIMIT 1] affect rows num [-1]
+2025-11-19 17:36:14.063557	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type = "index" AND tbl_name = "users" AND name = "idx_users_deleted_at"] affect rows num [-1]
+2025-11-19 17:36:14.066771	FATAL	beaconImp/worker.go:8	listen tcp :8000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.

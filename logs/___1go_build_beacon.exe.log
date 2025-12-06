@@ -1,0 +1,8 @@
+2025-11-20 17:23:24.301727	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type='table' AND name="users"] affect rows num [-1]
+2025-11-20 17:23:24.318914	INFO	gorm@v1.31.1/finisher_api.go:545	execute [SELECT sql FROM sqlite_master WHERE type IN ("table","index") AND tbl_name = "users" AND sql IS NOT NULL order by type = "table" desc] affect rows num [2]
+2025-11-20 17:23:24.319422	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` LIMIT 1] affect rows num [-1]
+2025-11-20 17:23:24.319422	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type = "index" AND tbl_name = "users" AND name = "idx_users_deleted_at"] affect rows num [-1]
+2025-11-20 17:32:40.043144	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type='table' AND name="users"] affect rows num [-1]
+2025-11-20 17:32:40.061873	INFO	gorm@v1.31.1/finisher_api.go:545	execute [SELECT sql FROM sqlite_master WHERE type IN ("table","index") AND tbl_name = "users" AND sql IS NOT NULL order by type = "table" desc] affect rows num [2]
+2025-11-20 17:32:40.061873	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT * FROM `users` LIMIT 1] affect rows num [-1]
+2025-11-20 17:32:40.061873	INFO	gorm@v1.31.1/callbacks.go:140	execute [SELECT count(*) FROM sqlite_master WHERE type = "index" AND tbl_name = "users" AND name = "idx_users_deleted_at"] affect rows num [-1]
