@@ -45,12 +45,13 @@
 </head>
 <body>
 
-<h1>欢迎回来 {{ .Username }}! <span>城池: 我的城池 坐标 (100,100)</span></h1>
+<h1>欢迎回来 {{ .UserName }}! <span>城池: 我的城池 坐标 (100,100)</span></h1>
+<h1>debug {{ .UserName }}</h1>
 
 <table>
     <thead>
     <tr>
-        <td>建筑</td>
+        <td><a href="/beacon/architecture">建筑</a></td>
         <td>招募</td>
         <td>地图</td>
         <td>出兵</td>
@@ -74,18 +75,22 @@
 
 <div class="resources">
     <h3>资源：</h3>
-    <p>木材 100/2000</p>
-    <p>石头 100/2000</p>
-    <p>铁矿 200/2000</p>
-    <p>粮食 300/5000</p>
-    <p>金币：2000</p>
+    <div class="resource-item"> 木材: {{.Resource.Wood}}</div>
+    <div class="resource-item"> 石头: {{.Resource.Stone}}</div>
+    <div class="resource-item"> 金币: {{.Resource.Gold}}</div>
+    <div class="resource-item"> 粮草: {{.Resource.Food}}</div>
 </div>
+
+<p><a href="/decision">决策</a></p>
+
+<p><a href="/map">地图</a></p>
 
 <div>
     <p>当前时间: <span id="current-time">Loading...</span></p>
 </div>
 
 <p><a href="/logout">注销</a></p>
+
 
 <script>
     function updateTime() {
