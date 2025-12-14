@@ -22,7 +22,7 @@ func authMiddleware() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
-
+		log.Infof("Login success: username=%s, userId=%d", userName, userId)
 		c.Set("userName", userName)
 		c.Set("userId", userId)
 		c.Next()
@@ -35,8 +35,42 @@ func (B *Beacon) RegisterHttpHandler() {
 	{
 		protected.GET("/main", func(c *gin.Context) {
 			username, _ := c.Get("userName")
+			userIDVal, _ := c.Get("userId")
+
+			var resource Resource
+			if userID, ok := userIDVal.(uint); ok {
+				result := B.db.FirstOrCreate(&resource, Resource{UserID: userID})
+				if result.Error != nil {
+					log.Errorf("Failed to load resource: %v", result.Error)
+				}
+				log.Infof("Loaded resource for user %d: wood=%d", userID, resource.Wood)
+			}
+
 			c.HTML(http.StatusOK, "main.html", gin.H{
 				"UserName": username,
+				"Resource": resource,
+			})
+
+			protected.GET("/architecture", func(c *gin.Context) {
+				userIDVal, _ := c.Get("userId")
+				var userID uint
+				if uid, ok := userIDVal.(uint); ok {
+					userID = uid
+				}
+
+				var resource Resource
+				result := B.db.FirstOrCreate(&resource, Resource{UserID: userID})
+				if result.Error != nil {
+					log.Errorf("Failed to load resource: %v", result.Error)
+				}
+
+				var buildings []Building
+				B.db.Where("user_id = ?", userID).Find(&buildings)
+
+				c.HTML(http.StatusOK, "architecture.html", gin.H{
+					"Resource":  resource,
+					"Buildings": buildings,
+				})
 			})
 		})
 	}
@@ -86,6 +120,21 @@ func (B *Beacon) RegisterHttpHandler() {
 			})
 			return
 		}
+		resource := Resource{UserID: user.ID}
+		B.db.Create(&resource)
+
+		buildingTypes := []BuildingType{
+			MainHall, Barracks, Smithy,
+			Warehouse, LumberMill, Quarry,
+		}
+		for _, bt := range buildingTypes {
+			building := Building{
+				UserID: user.ID,
+				Type:   bt,
+				Level:  0,
+			}
+			B.db.Create(&building)
+		}
 
 		log.Infof("New user registered: %s", username)
 		c.Redirect(http.StatusFound, "/login")
@@ -128,4 +177,11 @@ func (B *Beacon) RegisterHttpHandler() {
 		c.SetCookie("session_id", "", -1, "/", "", false, true)
 		c.Redirect(http.StatusFound, "/")
 	})
+	B.r.GET("/decision", func(c *gin.Context) {
+		c.HTML(200, "decision.html", gin.H{})
+	})
+	B.r.GET("/map", func(c *gin.Context) {
+		c.HTML(200, "map.html", gin.H{})
+	})
+
 }
