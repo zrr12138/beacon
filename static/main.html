@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>主页 - Beacon</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        .nav-links {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .nav-links a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        .error {
+            color: red;
+            padding: 10px;
+            background-color: #fee;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body x-data="mainApp()" x-init="init()">
+    <h1>欢迎回来, <span x-text="userName"></span>!</h1>
+
+    <div class="nav-links">
+        <a href="/buildings">建筑管理</a>
+        <a href="/recruit">招募士兵</a>
+        <a href="/map">地图</a>
+        <a href="#" @click.prevent="logout">注销登录</a>
+    </div>
+
+    <div x-show="loading" class="loading">
+        加载中...
+    </div>
+
+    <div x-show="error" class="error" x-text="error"></div>
+
+    <div x-show="!loading && !error">
+        <!-- 城池信息 -->
+        <div class="section">
+            <h2>城池: <span x-text="cityInfo.name"></span> (<span x-text="cityInfo.pos_x"></span>, <span x-text="cityInfo.pos_y"></span>)</h2>
+        </div>
+
+        <!-- 资源状态 -->
+        <div class="section">
+            <h3>资源状态</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>资源类型</th>
+                        <th>当前数量 / 仓库容量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>木材</td>
+                        <td><span x-text="resources.wood"></span> / <span x-text="resources.capacity"></span></td>
+                    </tr>
+                    <tr>
+                        <td>石料</td>
+                        <td><span x-text="resources.stone"></span> / <span x-text="resources.capacity"></span></td>
+                    </tr>
+                    <tr>
+                        <td>铁矿</td>
+                        <td><span x-text="resources.iron"></span> / <span x-text="resources.capacity"></span></td>
+                    </tr>
+                    <tr>
+                        <td>粮食</td>
+                        <td><span x-text="resources.food"></span> / <span x-text="resources.capacity"></span></td>
+                    </tr>
+                    <tr>
+                        <td>金币</td>
+                        <td><span x-text="resources.gold"></span> (无上限)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 兵力情况 -->
+        <div class="section">
+            <h3>兵力情况</h3>
+            <template x-if="troops.length > 0">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>兵种</th>
+                            <th>数量</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="troop in troops" :key="troop.type">
+                            <tr>
+                                <td x-text="troop.name_cn"></td>
+                                <td x-text="troop.quantity"></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+            <template x-if="troops.length === 0">
+                <p>暂无士兵</p>
+            </template>
+        </div>
+
+        <!-- 建筑升级队列 -->
+        <div class="section">
+            <h3>建筑升级队列</h3>
+            <template x-if="buildingQueue.length > 0">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>建筑名称</th>
+                            <th>升至等级</th>
+                            <th>剩余时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="item in buildingQueue" :key="item.building_type">
+                            <tr>
+                                <td x-text="item.building_name_cn"></td>
+                                <td x-text="item.target_level"></td>
+                                <td x-text="formatTime(item.remaining_time)"></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+            <template x-if="buildingQueue.length === 0">
+                <p>无建筑升级</p>
+            </template>
+        </div>
+
+        <!-- 招募队列 -->
+        <div class="section">
+            <h3>招募队列</h3>
+            <template x-if="recruitQueue.length > 0">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>兵种</th>
+                            <th>剩余数量</th>
+                            <th>剩余时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="item in recruitQueue" :key="item.troop_type">
+                            <tr>
+                                <td x-text="item.troop_name_cn"></td>
+                                <td x-text="item.remaining_qty"></td>
+                                <td x-text="formatTime(getTotalRecruitTime(item))"></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </template>
+            <template x-if="recruitQueue.length === 0">
+                <p>无招募任务</p>
+            </template>
+        </div>
+    </div>
+
+    <script>
+        function mainApp() {
+            return {
+                userName: '',
+                cityId: null,
+                cityInfo: { name: '', pos_x: 0, pos_y: 0 },
+                resources: { wood: 0, stone: 0, iron: 0, food: 0, gold: 0, capacity: 0 },
+                troops: [],
+                buildingQueue: [],
+                recruitQueue: [],
+                loading: true,
+                error: '',
+                refreshInterval: null,
+                
+                async init() {
+                    await this.loadAllData();
+                    // 每5秒刷新一次数据
+                    this.refreshInterval = setInterval(() => {
+                        this.loadAllData();
+                    }, 5000);
+                },
+                
+                async loadAllData() {
+                    try {
+                        // 先获取城市列表
+                        const citiesResp = await fetch('/api/cities');
+                        if (!citiesResp.ok) {
+                            if (citiesResp.status === 401) {
+                                window.location.href = '/login';
+                                return;
+                            }
+                            throw new Error('获取城市列表失败');
+                        }
+                        
+                        const citiesData = await citiesResp.json();
+                        if (!citiesData.cities || citiesData.cities.length === 0) {
+                            this.error = '没有可用的城市';
+                            this.loading = false;
+                            return;
+                        }
+                        
+                        // 使用第一个城市
+                        const city = citiesData.cities[0];
+                        this.cityId = city.id;
+                        this.cityInfo = city;
+                        
+                        // 并行加载所有数据
+                        await Promise.all([
+                            this.loadResources(),
+                            this.loadTroops(),
+                            this.loadBuildingQueue(),
+                            this.loadRecruitQueue()
+                        ]);
+                        
+                        this.loading = false;
+                    } catch (error) {
+                        console.error('Load data error:', error);
+                        this.error = '加载数据失败: ' + error.message;
+                        this.loading = false;
+                    }
+                },
+                
+                async loadResources() {
+                    const resp = await fetch(`/api/resources?city_id=${this.cityId}`);
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        this.resources = data;
+                    }
+                },
+                
+                async loadTroops() {
+                    const resp = await fetch(`/api/troops?city_id=${this.cityId}`);
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        this.troops = data.troops || [];
+                    }
+                },
+                
+                async loadBuildingQueue() {
+                    const resp = await fetch(`/api/building-queue?city_id=${this.cityId}`);
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        this.buildingQueue = data.building_queue || [];
+                    }
+                },
+                
+                async loadRecruitQueue() {
+                    const resp = await fetch(`/api/recruit-queue?city_id=${this.cityId}`);
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        this.recruitQueue = data.recruit_queue || [];
+                    }
+                },
+                
+                async logout() {
+                    if (this.refreshInterval) {
+                        clearInterval(this.refreshInterval);
+                    }
+                    await fetch('/api/logout');
+                    window.location.href = '/';
+                },
+                
+                // 格式化时间为人类可读格式
+                formatTime(seconds) {
+                    if (!seconds || seconds <= 0) return '0秒';
+                    
+                    const s = Math.floor(seconds);
+                    const hours = Math.floor(s / 3600);
+                    const minutes = Math.floor((s % 3600) / 60);
+                    const secs = s % 60;
+                    
+                    const parts = [];
+                    if (hours > 0) parts.push(`${hours}小时`);
+                    if (minutes > 0) parts.push(`${minutes}分钟`);
+                    if (secs > 0 || parts.length === 0) parts.push(`${secs}秒`);
+                    
+                    return parts.join('');
+                },
+                
+                // 计算招募队列总剩余时间
+                getTotalRecruitTime(item) {
+                    // 总时间 = 当前单位剩余时间 + (剩余数量-1) * 单位时间
+                    return item.remaining_time + (item.remaining_qty - 1) * item.time_per_unit;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

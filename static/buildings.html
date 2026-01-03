@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>建筑管理 - Beacon</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover:not(:disabled) {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .back-link {
+            margin: 20px 0;
+        }
+        .back-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        .error {
+            color: red;
+            padding: 10px;
+            background-color: #fee;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success {
+            color: green;
+            padding: 10px;
+            background-color: #efe;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .resource-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body x-data="buildingsApp()" x-init="init()">
+    <h2>建筑管理</h2>
+
+    <div class="back-link">
+        <a href="/main">← 返回主页</a>
+    </div>
+
+    <div x-show="loading" class="loading">
+        加载中...
+    </div>
+
+    <div x-show="error" class="error" x-text="error"></div>
+    <div x-show="successMsg" class="success" x-text="successMsg"></div>
+
+    <div x-show="!loading && !error">
+        <!-- 资源信息 -->
+        <div class="resource-info">
+            <h3>城池资源</h3>
+            <p>
+                木材: <strong x-text="resources.wood"></strong> | 
+                石料: <strong x-text="resources.stone"></strong> | 
+                铁矿: <strong x-text="resources.iron"></strong> | 
+                粮食: <strong x-text="resources.food"></strong> | 
+                金币: <strong x-text="resources.gold"></strong>
+            </p>
+        </div>
+
+        <!-- 建筑列表 -->
+        <h3>建筑列表</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>建筑名称</th>
+                    <th>当前等级</th>
+                    <th>当前效果</th>
+                    <th>下一级效果</th>
+                    <th>升级所需资源</th>
+                    <th>升级时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template x-for="building in buildings" :key="building.type">
+                    <tr>
+                        <td x-text="building.name_cn"></td>
+                        <td x-text="building.level"></td>
+                        <td x-text="building.current_effect"></td>
+                        <td x-text="building.next_effect || '-'"></td>
+                        <td>
+                            <template x-if="building.next_level_conf">
+                                <span>
+                                    木:<span x-text="building.next_level_conf.upgrade_cost_wood"></span> 
+                                    石:<span x-text="building.next_level_conf.upgrade_cost_stone"></span> 
+                                    铁:<span x-text="building.next_level_conf.upgrade_cost_iron"></span> 
+                                    粮:<span x-text="building.next_level_conf.upgrade_cost_food"></span> 
+                                    金:<span x-text="building.next_level_conf.upgrade_cost_gold"></span>
+                                </span>
+                            </template>
+                            <template x-if="!building.next_level_conf">
+                                已满级
+                            </template>
+                        </td>
+                        <td>
+                            <template x-if="building.next_level_conf">
+                                <span x-text="formatTime(building.next_level_conf.upgrade_time_seconds)"></span>
+                            </template>
+                            <template x-if="!building.next_level_conf">
+                                -
+                            </template>
+                        </td>
+                        <td>
+                            <template x-if="building.is_upgrading">
+                                <span style="color: #666;">升级中...</span>
+                            </template>
+                            <template x-if="!building.is_upgrading && building.next_level_conf">
+                                <button @click="upgradeBuilding(building.type)">升级</button>
+                            </template>
+                            <template x-if="!building.is_upgrading && !building.next_level_conf">
+                                <span>-</span>
+                            </template>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function buildingsApp() {
+            return {
+                cityId: null,
+                resources: { wood: 0, stone: 0, iron: 0, food: 0, gold: 0 },
+                buildings: [],
+                loading: true,
+                error: '',
+                successMsg: '',
+                refreshInterval: null,
+                
+                async init() {
+                    await this.loadData();
+                    // 每3秒刷新一次数据
+                    this.refreshInterval = setInterval(() => {
+                        this.loadData();
+                    }, 3000);
+                },
+                
+                async loadData() {
+                    try {
+                        // 获取城市ID
+                        if (!this.cityId) {
+                            const citiesResp = await fetch('/api/cities');
+                            if (!citiesResp.ok) {
+                                if (citiesResp.status === 401) {
+                                    window.location.href = '/login';
+                                    return;
+                                }
+                                throw new Error('获取城市列表失败');
+                            }
+                            const citiesData = await citiesResp.json();
+                            if (!citiesData.cities || citiesData.cities.length === 0) {
+                                throw new Error('没有可用的城市');
+                            }
+                            this.cityId = citiesData.cities[0].id;
+                        }
+                        
+                        // 并行加载资源和建筑
+                        const [resourcesResp, buildingsResp] = await Promise.all([
+                            fetch(`/api/resources?city_id=${this.cityId}`),
+                            fetch(`/api/buildings?city_id=${this.cityId}`)
+                        ]);
+                        
+                        if (resourcesResp.ok) {
+                            this.resources = await resourcesResp.json();
+                        }
+                        
+                        if (buildingsResp.ok) {
+                            const data = await buildingsResp.json();
+                            this.buildings = data.buildings || [];
+                        }
+                        
+                        this.loading = false;
+                    } catch (error) {
+                        console.error('Load data error:', error);
+                        this.error = '加载数据失败: ' + error.message;
+                        this.loading = false;
+                    }
+                },
+                
+                async upgradeBuilding(buildingType) {
+                    this.error = '';
+                    this.successMsg = '';
+                    
+                    try {
+                        const formData = new FormData();
+                        formData.append('city_id', this.cityId);
+                        formData.append('building_type', buildingType);
+                        
+                        const response = await fetch('/api/building/upgrade', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (response.ok) {
+                            this.successMsg = '成功加入升级队列！';
+                            // 刷新数据
+                            await this.loadData();
+                            // 3秒后清除成功消息
+                            setTimeout(() => {
+                                this.successMsg = '';
+                            }, 3000);
+                        } else {
+                            this.error = data.error || '升级失败';
+                        }
+                    } catch (error) {
+                        this.error = '网络错误，请稍后重试';
+                        console.error('Upgrade error:', error);
+                    }
+                },
+                
+                // 格式化时间为人类可读格式
+                formatTime(seconds) {
+                    if (!seconds || seconds <= 0) return '0秒';
+                    
+                    const s = Math.floor(seconds);
+                    const hours = Math.floor(s / 3600);
+                    const minutes = Math.floor((s % 3600) / 60);
+                    const secs = s % 60;
+                    
+                    const parts = [];
+                    if (hours > 0) parts.push(`${hours}小时`);
+                    if (minutes > 0) parts.push(`${minutes}分钟`);
+                    if (secs > 0 || parts.length === 0) parts.push(`${secs}秒`);
+                    
+                    return parts.join('');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
