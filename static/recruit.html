@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>招募士兵 - Beacon</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        .back-link {
+            margin: 20px 0;
+        }
+        .back-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        .error {
+            color: red;
+            padding: 10px;
+            background-color: #fee;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .recruit-btn {
+            padding: 6px 12px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .recruit-btn:hover {
+            background-color: #218838;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+        }
+        .modal-header {
+            margin-bottom: 20px;
+        }
+        .modal-body {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        .success {
+            color: green;
+            padding: 10px;
+            background-color: #efe;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .troop-stats {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .troop-stats table {
+            margin: 0;
+        }
+    </style>
+</head>
+<body x-data="recruitApp()" x-init="init()">
+    <h2>招募士兵</h2>
+
+    <div class="back-link">
+        <a href="/main">← 返回主页</a>
+    </div>
+
+    <div x-show="loading" class="loading">
+        加载中...
+    </div>
+
+    <div x-show="error" class="error" x-text="error"></div>
+    <div x-show="successMsg" class="success" x-text="successMsg"></div>
+
+    <div x-show="!loading && !error">
+        <h3>可招募兵种</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>兵种名称</th>
+                    <th>招募资源</th>
+                    <th>招募时间</th>
+                    <th>粮食消耗/时</th>
+                    <th>近战</th>
+                    <th>远战</th>
+                    <th>近防</th>
+                    <th>远防</th>
+                    <th>速度</th>
+                    <th>负载</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template x-for="troop in troops" :key="troop.type">
+                    <tr>
+                        <td x-text="troop.name"></td>
+                        <td>
+                            <small>
+                                木:<span x-text="troop.recruit_cost_wood"></span>
+                                石:<span x-text="troop.recruit_cost_stone"></span>
+                                铁:<span x-text="troop.recruit_cost_iron"></span>
+                                粮:<span x-text="troop.recruit_cost_food"></span>
+                            </small>
+                        </td>
+                        <td x-text="formatTime(troop.recruit_time_seconds)"></td>
+                        <td x-text="troop.food_consumption"></td>
+                        <td x-text="troop.melee_attack"></td>
+                        <td x-text="troop.ranged_attack"></td>
+                        <td x-text="troop.melee_defense"></td>
+                        <td x-text="troop.ranged_defense"></td>
+                        <td x-text="troop.speed"></td>
+                        <td x-text="troop.capacity"></td>
+                        <td>
+                            <a href="#" @click.prevent="openRecruitModal(troop)" class="recruit-btn">招募</a>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 招募模态框 -->
+    <div class="modal" :class="{ 'show': showModal }">
+        <div class="modal-content" x-show="selectedTroop">
+            <div class="modal-header">
+                <h3>招募 - <span x-text="selectedTroop?.name"></span></h3>
+            </div>
+            
+            <div class="modal-body">
+                <div class="troop-stats">
+                    <h4>兵种属性</h4>
+                    <table>
+                        <tr>
+                            <td>近程攻击</td>
+                            <td x-text="selectedTroop?.melee_attack"></td>
+                            <td>远程攻击</td>
+                            <td x-text="selectedTroop?.ranged_attack"></td>
+                        </tr>
+                        <tr>
+                            <td>近程防御</td>
+                            <td x-text="selectedTroop?.melee_defense"></td>
+                            <td>远程防御</td>
+                            <td x-text="selectedTroop?.ranged_defense"></td>
+                        </tr>
+                        <tr>
+                            <td>移动速度</td>
+                            <td x-text="selectedTroop?.speed"></td>
+                            <td>负载数量</td>
+                            <td x-text="selectedTroop?.capacity"></td>
+                        </tr>
+                        <tr>
+                            <td>粮食消耗/时</td>
+                            <td x-text="selectedTroop?.food_consumption"></td>
+                            <td>招募时间</td>
+                            <td x-text="formatTime(selectedTroop?.recruit_time_seconds)"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="troop-stats">
+                    <h4>招募所需资源（单个）</h4>
+                    <table>
+                        <tr>
+                            <td>木材</td>
+                            <td x-text="selectedTroop?.recruit_cost_wood"></td>
+                            <td>石料</td>
+                            <td x-text="selectedTroop?.recruit_cost_stone"></td>
+                        </tr>
+                        <tr>
+                            <td>铁矿</td>
+                            <td x-text="selectedTroop?.recruit_cost_iron"></td>
+                            <td>粮食</td>
+                            <td x-text="selectedTroop?.recruit_cost_food"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">招募数量:</label>
+                    <input 
+                        type="number" 
+                        id="quantity" 
+                        x-model="recruitQuantity" 
+                        :min="1" 
+                        :max="maxRecruit"
+                        @input="recruitQuantity = Math.min(Math.max(1, recruitQuantity), maxRecruit)">
+                    <small> <span x-text="maxRecruit"></span></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity_slider">或使用滑块:</label>
+                    <input 
+                        type="range" 
+                        id="quantity_slider" 
+                        x-model="recruitQuantity" 
+                        :min="1" 
+                        :max="maxRecruit"
+                        style="width: 100%;">
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-secondary" @click="closeRecruitModal">取消</button>
+                <button class="btn btn-primary" @click="confirmRecruit" :disabled="recruiting">
+                    <span x-show="!recruiting">确认招募</span>
+                    <span x-show="recruiting">招募中...</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function recruitApp() {
+            return {
+                cityId: null,
+                troops: [],
+                resources: { wood: 0, stone: 0, iron: 0, food: 0, gold: 0 },
+                loading: true,
+                error: '',
+                successMsg: '',
+                showModal: false,
+                selectedTroop: null,
+                recruitQuantity: 1,
+                maxRecruit: 0,
+                recruiting: false,
+                
+                async init() {
+                    await this.loadData();
+                },
+                
+                async loadData() {
+                    try {
+                        // 获取城市ID
+                        if (!this.cityId) {
+                            const citiesResp = await fetch('/api/cities');
+                            if (!citiesResp.ok) {
+                                if (citiesResp.status === 401) {
+                                    window.location.href = '/login';
+                                    return;
+                                }
+                                throw new Error('获取城市列表失败');
+                            }
+                            const citiesData = await citiesResp.json();
+                            if (!citiesData.cities || citiesData.cities.length === 0) {
+                                throw new Error('没有可用的城市');
+                            }
+                            this.cityId = citiesData.cities[0].id;
+                        }
+                        
+                        // 并行加载资源和兵种列表
+                        const [resourcesResp, troopsResp] = await Promise.all([
+                            fetch(`/api/resources?city_id=${this.cityId}`),
+                            fetch('/api/recruit/list')
+                        ]);
+                        
+                        if (resourcesResp.ok) {
+                            this.resources = await resourcesResp.json();
+                        }
+                        
+                        if (troopsResp.ok) {
+                            const data = await troopsResp.json();
+                            this.troops = data.troops || [];
+                        }
+                        
+                        this.loading = false;
+                    } catch (error) {
+                        console.error('Load data error:', error);
+                        this.error = '加载数据失败: ' + error.message;
+                        this.loading = false;
+                    }
+                },
+                
+                openRecruitModal(troop) {
+                    this.selectedTroop = troop;
+                    this.recruitQuantity = 1;
+                    
+                    // 根据实际资源消耗计算最大可招募数量
+                    const maxByWood = troop.recruit_cost_wood > 0 
+                        ? Math.floor(this.resources.wood / troop.recruit_cost_wood) 
+                        : 999999;
+                    const maxByStone = troop.recruit_cost_stone > 0 
+                        ? Math.floor(this.resources.stone / troop.recruit_cost_stone) 
+                        : 999999;
+                    const maxByIron = troop.recruit_cost_iron > 0 
+                        ? Math.floor(this.resources.iron / troop.recruit_cost_iron) 
+                        : 999999;
+                    const maxByFood = troop.recruit_cost_food > 0 
+                        ? Math.floor(this.resources.food / troop.recruit_cost_food) 
+                        : 999999;
+                    
+                    this.maxRecruit = Math.max(1, Math.min(maxByWood, maxByStone, maxByIron, maxByFood));
+                    this.showModal = true;
+                },
+                
+                closeRecruitModal() {
+                    this.showModal = false;
+                    this.selectedTroop = null;
+                },
+                
+                async confirmRecruit() {
+                    this.error = '';
+                    this.successMsg = '';
+                    this.recruiting = true;
+                    
+                    try {
+                        const formData = new FormData();
+                        formData.append('city_id', this.cityId);
+                        formData.append('troop_type', this.selectedTroop.type);
+                        formData.append('quantity', this.recruitQuantity);
+                        
+                        const response = await fetch('/api/recruit/confirm', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (response.ok) {
+                            this.successMsg = '成功加入招募队列！';
+                            this.closeRecruitModal();
+                            // 刷新资源
+                            await this.loadData();
+                            // 3秒后清除成功消息
+                            setTimeout(() => {
+                                this.successMsg = '';
+                            }, 3000);
+                        } else {
+                            this.error = data.error || '招募失败';
+                        }
+                    } catch (error) {
+                        this.error = '网络错误，请稍后重试';
+                        console.error('Recruit error:', error);
+                    } finally {
+                        this.recruiting = false;
+                    }
+                },
+                
+                // 格式化时间为人类可读格式
+                formatTime(seconds) {
+                    if (!seconds || seconds <= 0) return '0秒';
+                    
+                    const s = Math.floor(seconds);
+                    const hours = Math.floor(s / 3600);
+                    const minutes = Math.floor((s % 3600) / 60);
+                    const secs = s % 60;
+                    
+                    const parts = [];
+                    if (hours > 0) parts.push(`${hours}小时`);
+                    if (minutes > 0) parts.push(`${minutes}分钟`);
+                    if (secs > 0 || parts.length === 0) parts.push(`${secs}秒`);
+                    
+                    return parts.join('');
+                }
+            }
+        }
+    </script>
+</body>
+</html>

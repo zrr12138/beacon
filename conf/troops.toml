@@ -1,0 +1,177 @@
+# 部队配置文件
+
+[[troop]]
+type = "supply_cart"
+name = "粮草兵"
+melee_attack = 2
+ranged_attack = 0
+melee_defense = 5
+ranged_defense = 5
+speed = 10
+capacity = 1000
+food_consumption = 1
+recruit_time_seconds = 48
+recruit_cost_wood = 20
+recruit_cost_iron = 40
+recruit_cost_food = 40
+recruit_cost_stone = 10
+
+[[troop]]
+type = "scout"
+name = "侦察兵"
+melee_attack = 10
+ranged_attack = 0
+melee_defense = 10
+ranged_defense = 10
+speed = 20
+capacity = 0
+food_consumption = 1
+recruit_time_seconds = 96
+recruit_cost_wood = 30
+recruit_cost_iron = 30
+recruit_cost_food = 40
+recruit_cost_stone = 20
+
+[[troop]]
+type = "spear_shield"
+name = "枪盾兵"
+melee_attack = 20
+ranged_attack = 0
+melee_defense = 40
+ranged_defense = 20
+speed = 10
+capacity = 50
+food_consumption = 1
+recruit_time_seconds = 96
+recruit_cost_wood = 30
+recruit_cost_iron = 35
+recruit_cost_food = 40
+recruit_cost_stone = 20
+
+[[troop]]
+type = "crossbowman"
+name = "强弩兵"
+melee_attack = 10
+ranged_attack = 50
+melee_defense = 15
+ranged_defense = 30
+speed = 10
+capacity = 30
+food_consumption = 1
+recruit_time_seconds = 96
+recruit_cost_wood = 35
+recruit_cost_iron = 30
+recruit_cost_food = 40
+recruit_cost_stone = 20
+
+[[troop]]
+type = "transport_cart"
+name = "运输车"
+melee_attack = 0
+ranged_attack = 0
+melee_defense = 10
+ranged_defense = 10
+speed = 8
+capacity = 3000
+food_consumption = 3
+recruit_time_seconds = 150
+recruit_cost_wood = 80
+recruit_cost_iron = 150
+recruit_cost_food = 150
+recruit_cost_stone = 40
+
+[[troop]]
+type = "settler"
+name = "拓荒部队"
+melee_attack = 50
+ranged_attack = 0
+melee_defense = 50
+ranged_defense = 50
+speed = 5
+capacity = 3000
+food_consumption = 10
+recruit_time_seconds = 480
+recruit_cost_wood = 3000
+recruit_cost_iron = 2000
+recruit_cost_food = 6000
+recruit_cost_stone = 2000
+
+[[troop]]
+type = "spearman"
+name = "长枪兵"
+melee_attack = 40
+ranged_attack = 0
+melee_defense = 60
+ranged_defense = 30
+speed = 12
+capacity = 60
+food_consumption = 3
+recruit_time_seconds = 288
+recruit_cost_wood = 100
+recruit_cost_iron = 120
+recruit_cost_food = 160
+recruit_cost_stone = 60
+
+[[troop]]
+type = "archer"
+name = "弓箭兵"
+melee_attack = 20
+ranged_attack = 60
+melee_defense = 30
+ranged_defense = 50
+speed = 12
+capacity = 50
+food_consumption = 3
+recruit_time_seconds = 288
+recruit_cost_wood = 120
+recruit_cost_iron = 100
+recruit_cost_food = 160
+recruit_cost_stone = 60
+
+[[troop]]
+type = "cavalry_lancer"
+name = "骑枪战将"
+melee_attack = 120
+ranged_attack = 0
+melee_defense = 100
+ranged_defense = 60
+speed = 25
+capacity = 100
+food_consumption = 12
+recruit_time_seconds = 600
+recruit_cost_wood = 400
+recruit_cost_iron = 480
+recruit_cost_food = 640
+recruit_cost_stone = 240
+
+[[troop]]
+type = "cavalry_archer"
+name = "骑射战将"
+melee_attack = 60
+ranged_attack = 120
+melee_defense = 60
+ranged_defense = 100
+speed = 25
+capacity = 80
+food_consumption = 12
+recruit_time_seconds = 600
+recruit_cost_wood = 480
+recruit_cost_iron = 400
+recruit_cost_food = 640
+recruit_cost_stone = 240
+
+[[troop]]
+type = "heavy_general"
+name = "重甲将军"
+melee_attack = 200
+ranged_attack = 0
+melee_defense = 250
+ranged_defense = 150
+speed = 15
+capacity = 150
+food_consumption = 20
+recruit_time_seconds = 1800
+recruit_cost_wood = 1050
+recruit_cost_iron = 900
+recruit_cost_food = 1200
+recruit_cost_stone = 600

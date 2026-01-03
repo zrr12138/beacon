@@ -1,0 +1,1633 @@
+# 建筑配置文件
+
+# ========== 伐木场 (Lumberyard) ==========
+[building.lumberyard]
+initial_level = 0
+max_level = 20
+
+[[building.lumberyard.levels]]
+level = 0
+production_per_hour = 20
+upgrade_time_seconds = 0
+upgrade_cost_wood = 0
+upgrade_cost_stone = 0
+upgrade_cost_iron = 0
+upgrade_cost_food = 0
+upgrade_cost_gold = 0
+population_cost = 0
+
+[[building.lumberyard.levels]]
+level = 1
+production_per_hour = 25
+upgrade_time_seconds = 90
+upgrade_cost_wood = 60
+upgrade_cost_stone = 50
+upgrade_cost_iron = 40
+upgrade_cost_food = 30
+upgrade_cost_gold = 0
+population_cost = 5
+
+[[building.lumberyard.levels]]
+level = 2
+production_per_hour = 34
+upgrade_time_seconds = 162
+upgrade_cost_wood = 132
+upgrade_cost_stone = 110
+upgrade_cost_iron = 88
+upgrade_cost_food = 66
+upgrade_cost_gold = 0
+population_cost = 7
+
+[[building.lumberyard.levels]]
+level = 3
+production_per_hour = 46
+upgrade_time_seconds = 291
+upgrade_cost_wood = 153
+upgrade_cost_stone = 127
+upgrade_cost_iron = 102
+upgrade_cost_food = 76
+upgrade_cost_gold = 0
+population_cost = 9
+
+[[building.lumberyard.levels]]
+level = 4
+production_per_hour = 63
+upgrade_time_seconds = 524
+upgrade_cost_wood = 186
+upgrade_cost_stone = 155
+upgrade_cost_iron = 124
+upgrade_cost_food = 93
+upgrade_cost_gold = 0
+population_cost = 13
+
+[[building.lumberyard.levels]]
+level = 5
+production_per_hour = 86
+upgrade_time_seconds = 944
+upgrade_cost_wood = 237
+upgrade_cost_stone = 197
+upgrade_cost_iron = 158
+upgrade_cost_food = 118
+upgrade_cost_gold = 0
+population_cost = 17
+
+[[building.lumberyard.levels]]
+level = 6
+production_per_hour = 117
+upgrade_time_seconds = 1700
+upgrade_cost_wood = 318
+upgrade_cost_stone = 265
+upgrade_cost_iron = 212
+upgrade_cost_food = 159
+upgrade_cost_gold = 5
+population_cost = 22
+
+[[building.lumberyard.levels]]
+level = 7
+production_per_hour = 158
+upgrade_time_seconds = 3061
+upgrade_cost_wood = 448
+upgrade_cost_stone = 373
+upgrade_cost_iron = 298
+upgrade_cost_food = 224
+upgrade_cost_gold = 10
+population_cost = 29
+
+[[building.lumberyard.levels]]
+level = 8
+production_per_hour = 215
+upgrade_time_seconds = 5509
+upgrade_cost_wood = 661
+upgrade_cost_stone = 551
+upgrade_cost_iron = 441
+upgrade_cost_food = 330
+upgrade_cost_gold = 15
+population_cost = 39
+
+[[building.lumberyard.levels]]
+level = 9
+production_per_hour = 293
+upgrade_time_seconds = 9917
+upgrade_cost_wood = 1026
+upgrade_cost_stone = 855
+upgrade_cost_iron = 684
+upgrade_cost_food = 513
+upgrade_cost_gold = 20
+population_cost = 52
+
+[[building.lumberyard.levels]]
+level = 10
+production_per_hour = 398
+upgrade_time_seconds = 17852
+upgrade_cost_wood = 1672
+upgrade_cost_stone = 1393
+upgrade_cost_iron = 1115
+upgrade_cost_food = 836
+upgrade_cost_gold = 50
+population_cost = 70
+
+[[building.lumberyard.levels]]
+level = 11
+production_per_hour = 541
+upgrade_time_seconds = 23208
+upgrade_cost_wood = 2860
+upgrade_cost_stone = 2383
+upgrade_cost_iron = 1907
+upgrade_cost_food = 1430
+upgrade_cost_gold = 100
+population_cost = 94
+
+[[building.lumberyard.levels]]
+level = 12
+production_per_hour = 736
+upgrade_time_seconds = 30170
+upgrade_cost_wood = 5137
+upgrade_cost_stone = 4281
+upgrade_cost_iron = 3425
+upgrade_cost_food = 2568
+upgrade_cost_gold = 150
+population_cost = 126
+
+[[building.lumberyard.levels]]
+level = 13
+production_per_hour = 1001
+upgrade_time_seconds = 39221
+upgrade_cost_wood = 9687
+upgrade_cost_stone = 8073
+upgrade_cost_iron = 6458
+upgrade_cost_food = 4843
+upgrade_cost_gold = 200
+population_cost = 168
+
+[[building.lumberyard.levels]]
+level = 14
+production_per_hour = 1362
+upgrade_time_seconds = 50987
+upgrade_cost_wood = 19180
+upgrade_cost_stone = 15984
+upgrade_cost_iron = 12787
+upgrade_cost_food = 9590
+upgrade_cost_gold = 300
+population_cost = 225
+
+[[building.lumberyard.levels]]
+level = 15
+production_per_hour = 1852
+upgrade_time_seconds = 66283
+upgrade_cost_wood = 39875
+upgrade_cost_stone = 33229
+upgrade_cost_iron = 26583
+upgrade_cost_food = 19937
+upgrade_cost_gold = 400
+population_cost = 301
+
+[[building.lumberyard.levels]]
+level = 16
+production_per_hour = 2518
+upgrade_time_seconds = 86168
+upgrade_cost_wood = 87043
+upgrade_cost_stone = 72536
+upgrade_cost_iron = 58029
+upgrade_cost_food = 43521
+upgrade_cost_gold = 500
+population_cost = 404
+
+[[building.lumberyard.levels]]
+level = 17
+production_per_hour = 3424
+upgrade_time_seconds = 112019
+upgrade_cost_wood = 199505
+upgrade_cost_stone = 166254
+upgrade_cost_iron = 133003
+upgrade_cost_food = 99752
+upgrade_cost_gold = 1000
+population_cost = 541
+
+[[building.lumberyard.levels]]
+level = 18
+production_per_hour = 4657
+upgrade_time_seconds = 145624
+upgrade_cost_wood = 480133
+upgrade_cost_stone = 400111
+upgrade_cost_iron = 320089
+upgrade_cost_food = 240066
+upgrade_cost_gold = 1500
+population_cost = 725
+
+[[building.lumberyard.levels]]
+level = 19
+production_per_hour = 6334
+upgrade_time_seconds = 189312
+upgrade_cost_wood = 1213273
+upgrade_cost_stone = 1011061
+upgrade_cost_iron = 808849
+upgrade_cost_food = 606636
+upgrade_cost_gold = 2000
+population_cost = 971
+
+[[building.lumberyard.levels]]
+level = 20
+production_per_hour = 8614
+upgrade_time_seconds = 246105
+upgrade_cost_wood = 3219176
+upgrade_cost_stone = 2682646
+upgrade_cost_iron = 2146117
+upgrade_cost_food = 1609588
+upgrade_cost_gold = 3000
+population_cost = 1301
+
+# ========== 铁矿场 (Iron Mine) ==========
+[building.iron_mine]
+initial_level = 0
+max_level = 20
+
+[[building.iron_mine.levels]]
+level = 0
+production_per_hour = 20
+upgrade_time_seconds = 0
+upgrade_cost_wood = 0
+upgrade_cost_stone = 0
+upgrade_cost_iron = 0
+upgrade_cost_food = 0
+upgrade_cost_gold = 0
+population_cost = 0
+
+[[building.iron_mine.levels]]
+level = 1
+production_per_hour = 25
+upgrade_time_seconds = 90
+upgrade_cost_wood = 50
+upgrade_cost_stone = 50
+upgrade_cost_iron = 50
+upgrade_cost_food = 30
+upgrade_cost_gold = 0
+population_cost = 5
+
+[[building.iron_mine.levels]]
+level = 2
+production_per_hour = 34
+upgrade_time_seconds = 162
+upgrade_cost_wood = 110
+upgrade_cost_stone = 110
+upgrade_cost_iron = 110
+upgrade_cost_food = 66
+upgrade_cost_gold = 0
+population_cost = 7
+
+[[building.iron_mine.levels]]
+level = 3
+production_per_hour = 46
+upgrade_time_seconds = 291
+upgrade_cost_wood = 127
+upgrade_cost_stone = 127
+upgrade_cost_iron = 127
+upgrade_cost_food = 76
+upgrade_cost_gold = 0
+population_cost = 9
+
+[[building.iron_mine.levels]]
+level = 4
+production_per_hour = 63
+upgrade_time_seconds = 524
+upgrade_cost_wood = 155
+upgrade_cost_stone = 155
+upgrade_cost_iron = 155
+upgrade_cost_food = 93
+upgrade_cost_gold = 0
+population_cost = 13
+
+[[building.iron_mine.levels]]
+level = 5
+production_per_hour = 86
+upgrade_time_seconds = 944
+upgrade_cost_wood = 197
+upgrade_cost_stone = 197
+upgrade_cost_iron = 197
+upgrade_cost_food = 118
+upgrade_cost_gold = 0
+population_cost = 17
+
+[[building.iron_mine.levels]]
+level = 6
+production_per_hour = 117
+upgrade_time_seconds = 1700
+upgrade_cost_wood = 265
+upgrade_cost_stone = 265
+upgrade_cost_iron = 265
+upgrade_cost_food = 159
+upgrade_cost_gold = 5
+population_cost = 22
+
+[[building.iron_mine.levels]]
+level = 7
+production_per_hour = 158
+upgrade_time_seconds = 3061
+upgrade_cost_wood = 373
+upgrade_cost_stone = 373
+upgrade_cost_iron = 373
+upgrade_cost_food = 224
+upgrade_cost_gold = 10
+population_cost = 29
+
+[[building.iron_mine.levels]]
+level = 8
+production_per_hour = 215
+upgrade_time_seconds = 5509
+upgrade_cost_wood = 551
+upgrade_cost_stone = 551
+upgrade_cost_iron = 551
+upgrade_cost_food = 330
+upgrade_cost_gold = 15
+population_cost = 39
+
+[[building.iron_mine.levels]]
+level = 9
+production_per_hour = 293
+upgrade_time_seconds = 9917
+upgrade_cost_wood = 855
+upgrade_cost_stone = 855
+upgrade_cost_iron = 855
+upgrade_cost_food = 513
+upgrade_cost_gold = 20
+population_cost = 52
+
+[[building.iron_mine.levels]]
+level = 10
+production_per_hour = 398
+upgrade_time_seconds = 17852
+upgrade_cost_wood = 1393
+upgrade_cost_stone = 1393
+upgrade_cost_iron = 1393
+upgrade_cost_food = 836
+upgrade_cost_gold = 50
+population_cost = 70
+
+[[building.iron_mine.levels]]
+level = 11
+production_per_hour = 541
+upgrade_time_seconds = 23208
+upgrade_cost_wood = 2383
+upgrade_cost_stone = 2383
+upgrade_cost_iron = 2383
+upgrade_cost_food = 1430
+upgrade_cost_gold = 100
+population_cost = 94
+
+[[building.iron_mine.levels]]
+level = 12
+production_per_hour = 736
+upgrade_time_seconds = 30170
+upgrade_cost_wood = 4281
+upgrade_cost_stone = 4281
+upgrade_cost_iron = 4281
+upgrade_cost_food = 2568
+upgrade_cost_gold = 150
+population_cost = 126
+
+[[building.iron_mine.levels]]
+level = 13
+production_per_hour = 1001
+upgrade_time_seconds = 39221
+upgrade_cost_wood = 8073
+upgrade_cost_stone = 8073
+upgrade_cost_iron = 8073
+upgrade_cost_food = 4843
+upgrade_cost_gold = 200
+population_cost = 168
+
+[[building.iron_mine.levels]]
+level = 14
+production_per_hour = 1362
+upgrade_time_seconds = 50987
+upgrade_cost_wood = 15984
+upgrade_cost_stone = 15984
+upgrade_cost_iron = 15984
+upgrade_cost_food = 9590
+upgrade_cost_gold = 300
+population_cost = 225
+
+[[building.iron_mine.levels]]
+level = 15
+production_per_hour = 1852
+upgrade_time_seconds = 66283
+upgrade_cost_wood = 33229
+upgrade_cost_stone = 33229
+upgrade_cost_iron = 33229
+upgrade_cost_food = 19937
+upgrade_cost_gold = 400
+population_cost = 301
+
+[[building.iron_mine.levels]]
+level = 16
+production_per_hour = 2518
+upgrade_time_seconds = 86168
+upgrade_cost_wood = 72536
+upgrade_cost_stone = 72536
+upgrade_cost_iron = 72536
+upgrade_cost_food = 43521
+upgrade_cost_gold = 500
+population_cost = 404
+
+[[building.iron_mine.levels]]
+level = 17
+production_per_hour = 3424
+upgrade_time_seconds = 93351
+upgrade_cost_wood = 166254
+upgrade_cost_stone = 166254
+upgrade_cost_iron = 166254
+upgrade_cost_food = 83127
+upgrade_cost_gold = 1000
+population_cost = 541
+
+[[building.iron_mine.levels]]
+level = 18
+production_per_hour = 4657
+upgrade_time_seconds = 145624
+upgrade_cost_wood = 400111
+upgrade_cost_stone = 400111
+upgrade_cost_iron = 400111
+upgrade_cost_food = 240066
+upgrade_cost_gold = 1500
+population_cost = 725
+
+[[building.iron_mine.levels]]
+level = 19
+production_per_hour = 6334
+upgrade_time_seconds = 189312
+upgrade_cost_wood = 1011061
+upgrade_cost_stone = 1011061
+upgrade_cost_iron = 1011061
+upgrade_cost_food = 606636
+upgrade_cost_gold = 2000
+population_cost = 971
+
+[[building.iron_mine.levels]]
+level = 20
+production_per_hour = 8614
+upgrade_time_seconds = 246105
+upgrade_cost_wood = 2682646
+upgrade_cost_stone = 2682646
+upgrade_cost_iron = 2682646
+upgrade_cost_food = 1609588
+upgrade_cost_gold = 3000
+population_cost = 1301
+
+# ========== 农田 (Farm) ==========
+[building.farm]
+initial_level = 0
+max_level = 20
+
+[[building.farm.levels]]
+level = 0
+production_per_hour = 20
+upgrade_time_seconds = 0
+upgrade_cost_wood = 0
+upgrade_cost_stone = 0
+upgrade_cost_iron = 0
+upgrade_cost_food = 0
+upgrade_cost_gold = 0
+population_cost = 0
+
+[[building.farm.levels]]
+level = 1
+production_per_hour = 25
+upgrade_time_seconds = 75
+upgrade_cost_wood = 55
+upgrade_cost_stone = 45
+upgrade_cost_iron = 35
+upgrade_cost_food = 25
+upgrade_cost_gold = 0
+population_cost = 5
+
+[[building.farm.levels]]
+level = 2
+production_per_hour = 34
+upgrade_time_seconds = 135
+upgrade_cost_wood = 121
+upgrade_cost_stone = 99
+upgrade_cost_iron = 77
+upgrade_cost_food = 55
+upgrade_cost_gold = 0
+population_cost = 7
+
+[[building.farm.levels]]
+level = 3
+production_per_hour = 46
+upgrade_time_seconds = 243
+upgrade_cost_wood = 140
+upgrade_cost_stone = 114
+upgrade_cost_iron = 89
+upgrade_cost_food = 63
+upgrade_cost_gold = 0
+population_cost = 9
+
+[[building.farm.levels]]
+level = 4
+production_per_hour = 63
+upgrade_time_seconds = 437
+upgrade_cost_wood = 170
+upgrade_cost_stone = 139
+upgrade_cost_iron = 108
+upgrade_cost_food = 77
+upgrade_cost_gold = 0
+population_cost = 13
+
+[[building.farm.levels]]
+level = 5
+production_per_hour = 86
+upgrade_time_seconds = 787
+upgrade_cost_wood = 217
+upgrade_cost_stone = 178
+upgrade_cost_iron = 138
+upgrade_cost_food = 98
+upgrade_cost_gold = 0
+population_cost = 17
+
+[[building.farm.levels]]
+level = 6
+production_per_hour = 117
+upgrade_time_seconds = 1417
+upgrade_cost_wood = 291
+upgrade_cost_stone = 238
+upgrade_cost_iron = 185
+upgrade_cost_food = 132
+upgrade_cost_gold = 5
+population_cost = 22
+
+[[building.farm.levels]]
+level = 7
+production_per_hour = 158
+upgrade_time_seconds = 2551
+upgrade_cost_wood = 410
+upgrade_cost_stone = 336
+upgrade_cost_iron = 261
+upgrade_cost_food = 186
+upgrade_cost_gold = 10
+population_cost = 29
+
+[[building.farm.levels]]
+level = 8
+production_per_hour = 215
+upgrade_time_seconds = 4592
+upgrade_cost_wood = 606
+upgrade_cost_stone = 496
+upgrade_cost_iron = 386
+upgrade_cost_food = 275
+upgrade_cost_gold = 15
+population_cost = 39
+
+[[building.farm.levels]]
+level = 9
+production_per_hour = 293
+upgrade_time_seconds = 8265
+upgrade_cost_wood = 941
+upgrade_cost_stone = 770
+upgrade_cost_iron = 599
+upgrade_cost_food = 427
+upgrade_cost_gold = 20
+population_cost = 52
+
+[[building.farm.levels]]
+level = 10
+production_per_hour = 398
+upgrade_time_seconds = 14877
+upgrade_cost_wood = 1533
+upgrade_cost_stone = 1254
+upgrade_cost_iron = 975
+upgrade_cost_food = 696
+upgrade_cost_gold = 50
+population_cost = 70
+
+[[building.farm.levels]]
+level = 11
+production_per_hour = 541
+upgrade_time_seconds = 19340
+upgrade_cost_wood = 2622
+upgrade_cost_stone = 2145
+upgrade_cost_iron = 1668
+upgrade_cost_food = 1191
+upgrade_cost_gold = 100
+population_cost = 94
+
+[[building.farm.levels]]
+level = 12
+production_per_hour = 736
+upgrade_time_seconds = 25142
+upgrade_cost_wood = 4709
+upgrade_cost_stone = 3853
+upgrade_cost_iron = 2996
+upgrade_cost_food = 2140
+upgrade_cost_gold = 150
+population_cost = 126
+
+[[building.farm.levels]]
+level = 13
+production_per_hour = 1001
+upgrade_time_seconds = 32685
+upgrade_cost_wood = 8880
+upgrade_cost_stone = 7266
+upgrade_cost_iron = 5651
+upgrade_cost_food = 4037
+upgrade_cost_gold = 200
+population_cost = 168
+
+[[building.farm.levels]]
+level = 14
+production_per_hour = 1362
+upgrade_time_seconds = 42490
+upgrade_cost_wood = 17582
+upgrade_cost_stone = 14386
+upgrade_cost_iron = 11189
+upgrade_cost_food = 7992
+upgrade_cost_gold = 300
+population_cost = 225
+
+[[building.farm.levels]]
+level = 15
+production_per_hour = 1852
+upgrade_time_seconds = 55237
+upgrade_cost_wood = 36553
+upgrade_cost_stone = 29907
+upgrade_cost_iron = 23261
+upgrade_cost_food = 16615
+upgrade_cost_gold = 400
+population_cost = 301
+
+[[building.farm.levels]]
+level = 16
+production_per_hour = 2518
+upgrade_time_seconds = 71808
+upgrade_cost_wood = 79790
+upgrade_cost_stone = 65283
+upgrade_cost_iron = 50775
+upgrade_cost_food = 36268
+upgrade_cost_gold = 500
+population_cost = 404
+
+[[building.farm.levels]]
+level = 17
+production_per_hour = 3424
+upgrade_time_seconds = 93351
+upgrade_cost_wood = 182880
+upgrade_cost_stone = 149629
+upgrade_cost_iron = 116378
+upgrade_cost_food = 83127
+upgrade_cost_gold = 1000
+population_cost = 541
+
+[[building.farm.levels]]
+level = 18
+production_per_hour = 4657
+upgrade_time_seconds = 121356
+upgrade_cost_wood = 440122
+upgrade_cost_stone = 360100
+upgrade_cost_iron = 280078
+upgrade_cost_food = 200056
+upgrade_cost_gold = 1500
+population_cost = 725
+
+[[building.farm.levels]]
+level = 19
+production_per_hour = 6334
+upgrade_time_seconds = 157763
+upgrade_cost_wood = 1112168
+upgrade_cost_stone = 909955
+upgrade_cost_iron = 707743
+upgrade_cost_food = 505531
+upgrade_cost_gold = 2000
+population_cost = 971
+
+[[building.farm.levels]]
+level = 20
+production_per_hour = 8614
+upgrade_time_seconds = 205092
+upgrade_cost_wood = 2950912
+upgrade_cost_stone = 2414382
+upgrade_cost_iron = 1877853
+upgrade_cost_food = 1341323
+upgrade_cost_gold = 3000
+population_cost = 1301
+
+# ========== 采石场 (Quarry) ==========
+[building.quarry]
+initial_level = 0
+max_level = 20
+
+[[building.quarry.levels]]
+level = 0
+production_per_hour = 20
+upgrade_time_seconds = 0
+upgrade_cost_wood = 0
+upgrade_cost_stone = 0
+upgrade_cost_iron = 0
+upgrade_cost_food = 0
+upgrade_cost_gold = 0
+population_cost = 0
+
+[[building.quarry.levels]]
+level = 1
+production_per_hour = 25
+upgrade_time_seconds = 90
+upgrade_cost_wood = 60
+upgrade_cost_stone = 60
+upgrade_cost_iron = 40
+upgrade_cost_food = 20
+upgrade_cost_gold = 0
+population_cost = 5
+
+[[building.quarry.levels]]
+level = 2
+production_per_hour = 34
+upgrade_time_seconds = 162
+upgrade_cost_wood = 132
+upgrade_cost_stone = 132
+upgrade_cost_iron = 88
+upgrade_cost_food = 44
+upgrade_cost_gold = 0
+population_cost = 7
+
+[[building.quarry.levels]]
+level = 3
+production_per_hour = 46
+upgrade_time_seconds = 291
+upgrade_cost_wood = 153
+upgrade_cost_stone = 153
+upgrade_cost_iron = 102
+upgrade_cost_food = 51
+upgrade_cost_gold = 0
+population_cost = 9
+
+[[building.quarry.levels]]
+level = 4
+production_per_hour = 63
+upgrade_time_seconds = 524
+upgrade_cost_wood = 186
+upgrade_cost_stone = 186
+upgrade_cost_iron = 124
+upgrade_cost_food = 62
+upgrade_cost_gold = 0
+population_cost = 13
+
+[[building.quarry.levels]]
+level = 5
+production_per_hour = 86
+upgrade_time_seconds = 944
+upgrade_cost_wood = 237
+upgrade_cost_stone = 237
+upgrade_cost_iron = 158
+upgrade_cost_food = 79
+upgrade_cost_gold = 0
+population_cost = 17
+
+[[building.quarry.levels]]
+level = 6
+production_per_hour = 117
+upgrade_time_seconds = 1700
+upgrade_cost_wood = 318
+upgrade_cost_stone = 318
+upgrade_cost_iron = 212
+upgrade_cost_food = 106
+upgrade_cost_gold = 5
+population_cost = 22
+
+[[building.quarry.levels]]
+level = 7
+production_per_hour = 158
+upgrade_time_seconds = 3061
+upgrade_cost_wood = 448
+upgrade_cost_stone = 448
+upgrade_cost_iron = 298
+upgrade_cost_food = 224
+upgrade_cost_gold = 10
+population_cost = 29
+
+[[building.quarry.levels]]
+level = 8
+production_per_hour = 215
+upgrade_time_seconds = 5509
+upgrade_cost_wood = 661
+upgrade_cost_stone = 661
+upgrade_cost_iron = 441
+upgrade_cost_food = 330
+upgrade_cost_gold = 15
+population_cost = 39
+
+[[building.quarry.levels]]
+level = 9
+production_per_hour = 293
+upgrade_time_seconds = 9917
+upgrade_cost_wood = 1026
+upgrade_cost_stone = 1026
+upgrade_cost_iron = 684
+upgrade_cost_food = 513
+upgrade_cost_gold = 20
+population_cost = 52
+
+[[building.quarry.levels]]
+level = 10
+production_per_hour = 398
+upgrade_time_seconds = 17852
+upgrade_cost_wood = 1672
+upgrade_cost_stone = 1672
+upgrade_cost_iron = 1115
+upgrade_cost_food = 836
+upgrade_cost_gold = 50
+population_cost = 70
+
+[[building.quarry.levels]]
+level = 11
+production_per_hour = 541
+upgrade_time_seconds = 23208
+upgrade_cost_wood = 2860
+upgrade_cost_stone = 2860
+upgrade_cost_iron = 1907
+upgrade_cost_food = 1430
+upgrade_cost_gold = 100
+population_cost = 94
+
+[[building.quarry.levels]]
+level = 12
+production_per_hour = 736
+upgrade_time_seconds = 30170
+upgrade_cost_wood = 5137
+upgrade_cost_stone = 5137
+upgrade_cost_iron = 3425
+upgrade_cost_food = 2568
+upgrade_cost_gold = 150
+population_cost = 126
+
+[[building.quarry.levels]]
+level = 13
+production_per_hour = 1001
+upgrade_time_seconds = 39221
+upgrade_cost_wood = 9687
+upgrade_cost_stone = 9687
+upgrade_cost_iron = 6458
+upgrade_cost_food = 4843
+upgrade_cost_gold = 200
+population_cost = 168
+
+[[building.quarry.levels]]
+level = 14
+production_per_hour = 1362
+upgrade_time_seconds = 50987
+upgrade_cost_wood = 19180
+upgrade_cost_stone = 19180
+upgrade_cost_iron = 12787
+upgrade_cost_food = 9590
+upgrade_cost_gold = 300
+population_cost = 225
+
+[[building.quarry.levels]]
+level = 15
+production_per_hour = 1852
+upgrade_time_seconds = 66283
+upgrade_cost_wood = 39875
+upgrade_cost_stone = 39875
+upgrade_cost_iron = 26583
+upgrade_cost_food = 19937
+upgrade_cost_gold = 400
+population_cost = 301
+
+[[building.quarry.levels]]
+level = 16
+production_per_hour = 2518
+upgrade_time_seconds = 86168
+upgrade_cost_wood = 87043
+upgrade_cost_stone = 87043
+upgrade_cost_iron = 58029
+upgrade_cost_food = 43521
+upgrade_cost_gold = 500
+population_cost = 404
+
+[[building.quarry.levels]]
+level = 17
+production_per_hour = 3424
+upgrade_time_seconds = 112019
+upgrade_cost_wood = 199505
+upgrade_cost_stone = 199505
+upgrade_cost_iron = 133003
+upgrade_cost_food = 99752
+upgrade_cost_gold = 1000
+population_cost = 541
+
+[[building.quarry.levels]]
+level = 18
+production_per_hour = 4657
+upgrade_time_seconds = 145624
+upgrade_cost_wood = 480133
+upgrade_cost_stone = 480133
+upgrade_cost_iron = 320089
+upgrade_cost_food = 240066
+upgrade_cost_gold = 1500
+population_cost = 725
+
+[[building.quarry.levels]]
+level = 19
+production_per_hour = 6334
+upgrade_time_seconds = 189312
+upgrade_cost_wood = 1213273
+upgrade_cost_stone = 1213273
+upgrade_cost_iron = 808849
+upgrade_cost_food = 606636
+upgrade_cost_gold = 2000
+population_cost = 971
+
+[[building.quarry.levels]]
+level = 20
+production_per_hour = 8614
+upgrade_time_seconds = 246105
+upgrade_cost_wood = 3219176
+upgrade_cost_stone = 3219176
+upgrade_cost_iron = 2146117
+upgrade_cost_food = 1073059
+upgrade_cost_gold = 3000
+population_cost = 1301
+
+
+# ========== 仓库 (Warehouse) ==========
+[building.warehouse]
+initial_level = 0
+max_level = 20
+
+[[building.warehouse.levels]]
+level = 0
+capacity = 5000
+upgrade_time_seconds = 0
+upgrade_cost_wood = 0
+upgrade_cost_stone = 0
+upgrade_cost_iron = 0
+upgrade_cost_food = 0
+upgrade_cost_gold = 0
+population_cost = 0
+
+[[building.warehouse.levels]]
+level = 1
+capacity = 7000
+upgrade_time_seconds = 480
+upgrade_cost_wood = 864
+upgrade_cost_stone = 672
+upgrade_cost_iron = 672
+upgrade_cost_food = 288
+upgrade_cost_gold = 0
+population_cost = 19
+
+[[building.warehouse.levels]]
+level = 2
+capacity = 12000
+upgrade_time_seconds = 768
+upgrade_cost_wood = 925
+upgrade_cost_stone = 720
+upgrade_cost_iron = 720
+upgrade_cost_food = 309
+upgrade_cost_gold = 0
+population_cost = 24
+
+[[building.warehouse.levels]]
+level = 3
+capacity = 20000
+upgrade_time_seconds = 1229
+upgrade_cost_wood = 1026
+upgrade_cost_stone = 798
+upgrade_cost_iron = 798
+upgrade_cost_food = 342
+upgrade_cost_gold = 0
+population_cost = 30
+
+[[building.warehouse.levels]]
+level = 4
+capacity = 29000
+upgrade_time_seconds = 1966
+upgrade_cost_wood = 1178
+upgrade_cost_stone = 915
+upgrade_cost_iron = 915
+upgrade_cost_food = 392
+upgrade_cost_gold = 0
+population_cost = 37
+
+[[building.warehouse.levels]]
+level = 5
+capacity = 39000
+upgrade_time_seconds = 3146
+upgrade_cost_wood = 1398
+upgrade_cost_stone = 1088
+upgrade_cost_iron = 1088
+upgrade_cost_food = 467
+upgrade_cost_gold = 0
+population_cost = 46
+
+[[building.warehouse.levels]]
+level = 6
+capacity = 50000
+upgrade_time_seconds = 5034
+upgrade_cost_wood = 1718
+upgrade_cost_stone = 1336
+upgrade_cost_iron = 1336
+upgrade_cost_food = 573
+upgrade_cost_gold = 5
+population_cost = 59
+
+[[building.warehouse.levels]]
+level = 7
+capacity = 62000
+upgrade_time_seconds = 8053
+upgrade_cost_wood = 2187
+upgrade_cost_stone = 1701
+upgrade_cost_iron = 1701
+upgrade_cost_food = 730
+upgrade_cost_gold = 10
+population_cost = 74
+
+[[building.warehouse.levels]]
+level = 8
+capacity = 77000
+upgrade_time_seconds = 12885
+upgrade_cost_wood = 2880
+upgrade_cost_stone = 2240
+upgrade_cost_iron = 2240
+upgrade_cost_food = 960
+upgrade_cost_gold = 15
+population_cost = 91
+
+[[building.warehouse.levels]]
+level = 9
+capacity = 120000
+upgrade_time_seconds = 20616
+upgrade_cost_wood = 3926
+upgrade_cost_stone = 3053
+upgrade_cost_iron = 3053
+upgrade_cost_food = 1309
+upgrade_cost_gold = 20
+population_cost = 115
+
+[[building.warehouse.levels]]
+level = 10
+capacity = 180000
+upgrade_time_seconds = 32986
+upgrade_cost_wood = 5538
+upgrade_cost_stone = 4307
+upgrade_cost_iron = 4307
+upgrade_cost_food = 1845
+upgrade_cost_gold = 50
+population_cost = 142
+
+[[building.warehouse.levels]]
+level = 11
+capacity = 280000
+upgrade_time_seconds = 36283
+upgrade_cost_wood = 8085
+upgrade_cost_stone = 6288
+upgrade_cost_iron = 6288
+upgrade_cost_food = 2696
+upgrade_cost_gold = 100
+population_cost = 179
+
+[[building.warehouse.levels]]
+level = 12
+capacity = 420000
+upgrade_time_seconds = 39912
+upgrade_cost_wood = 12214
+upgrade_cost_stone = 9502
+upgrade_cost_iron = 9502
+upgrade_cost_food = 4072
+upgrade_cost_gold = 150
+population_cost = 224
+
+[[building.warehouse.levels]]
+level = 13
+capacity = 650000
+upgrade_time_seconds = 43904
+upgrade_cost_wood = 19104
+upgrade_cost_stone = 14859
+upgrade_cost_iron = 14859
+upgrade_cost_food = 6368
+upgrade_cost_gold = 200
+population_cost = 280
+
+[[building.warehouse.levels]]
+level = 14
+capacity = 1010000
+upgrade_time_seconds = 48294
+upgrade_cost_wood = 30925
+upgrade_cost_stone = 24054
+upgrade_cost_iron = 24054
+upgrade_cost_food = 10309
+upgrade_cost_gold = 300
+population_cost = 349
+
+[[building.warehouse.levels]]
+level = 15
+capacity = 1580000
+upgrade_time_seconds = 53123
+upgrade_cost_wood = 51810
+upgrade_cost_stone = 40298
+upgrade_cost_iron = 40298
+upgrade_cost_food = 17270
+upgrade_cost_gold = 400
+population_cost = 437
+
+[[building.warehouse.levels]]
+level = 16
+capacity = 2460000
+upgrade_time_seconds = 58435
+upgrade_cost_wood = 89838
+upgrade_cost_stone = 69875
+upgrade_cost_iron = 69875
+upgrade_cost_food = 29946
+upgrade_cost_gold = 500
+population_cost = 546
+
+[[building.warehouse.levels]]
+level = 17
+capacity = 4000000
+upgrade_time_seconds = 64278
+upgrade_cost_wood = 161230
+upgrade_cost_stone = 125402
+upgrade_cost_iron = 125402
+upgrade_cost_food = 53742
+upgrade_cost_gold = 1000
+population_cost = 682
+
+[[building.warehouse.levels]]
+level = 18
+capacity = 6300000
+upgrade_time_seconds = 70707
+upgrade_cost_wood = 299483
+upgrade_cost_stone = 232933
+upgrade_cost_iron = 232933
+upgrade_cost_food = 99829
+upgrade_cost_gold = 1500
+population_cost = 853
+
+[[building.warehouse.levels]]
+level = 19
+capacity = 11000000
+upgrade_time_seconds = 77778
+upgrade_cost_wood = 575758
+upgrade_cost_stone = 447811
+upgrade_cost_iron = 447811
+upgrade_cost_food = 191920
+upgrade_cost_gold = 2000
+population_cost = 1066
+
+[[building.warehouse.levels]]
+level = 20
+capacity = 18000000
+upgrade_time_seconds = 85555
+upgrade_cost_wood = 1145637
+upgrade_cost_stone = 891051
+upgrade_cost_iron = 891051
+upgrade_cost_food = 381878
+upgrade_cost_gold = 3000
+population_cost = 1333
+
+# ========== 官府 (Government) ==========
+[building.government]
+initial_level = 1
+max_level = 20
+
+[[building.government.levels]]
+level = 1
+build_speed_boost = 2
+upgrade_time_seconds = 720
+upgrade_cost_wood = 600
+upgrade_cost_stone = 450
+upgrade_cost_iron = 350
+upgrade_cost_food = 300
+upgrade_cost_gold = 0
+population_cost = 20
+
+[[building.government.levels]]
+level = 2
+build_speed_boost = 3
+upgrade_time_seconds = 994
+upgrade_cost_wood = 655
+upgrade_cost_stone = 491
+upgrade_cost_iron = 382
+upgrade_cost_food = 328
+upgrade_cost_gold = 0
+population_cost = 26
+
+[[building.government.levels]]
+level = 3
+build_speed_boost = 5
+upgrade_time_seconds = 1371
+upgrade_cost_wood = 748
+upgrade_cost_stone = 561
+upgrade_cost_iron = 436
+upgrade_cost_food = 374
+upgrade_cost_gold = 0
+population_cost = 34
+
+[[building.government.levels]]
+level = 4
+build_speed_boost = 7
+upgrade_time_seconds = 1892
+upgrade_cost_wood = 892
+upgrade_cost_stone = 669
+upgrade_cost_iron = 520
+upgrade_cost_food = 446
+upgrade_cost_gold = 0
+population_cost = 44
+
+[[building.government.levels]]
+level = 5
+build_speed_boost = 10
+upgrade_time_seconds = 2611
+upgrade_cost_wood = 1111
+upgrade_cost_stone = 833
+upgrade_cost_iron = 648
+upgrade_cost_food = 556
+upgrade_cost_gold = 0
+population_cost = 57
+
+[[building.government.levels]]
+level = 6
+build_speed_boost = 13
+upgrade_time_seconds = 3604
+upgrade_cost_wood = 1447
+upgrade_cost_stone = 1085
+upgrade_cost_iron = 844
+upgrade_cost_food = 724
+upgrade_cost_gold = 5
+population_cost = 74
+
+[[building.government.levels]]
+level = 7
+build_speed_boost = 17
+upgrade_time_seconds = 4973
+upgrade_cost_wood = 1969
+upgrade_cost_stone = 1477
+upgrade_cost_iron = 1149
+upgrade_cost_food = 985
+upgrade_cost_gold = 10
+population_cost = 97
+
+[[building.government.levels]]
+level = 8
+build_speed_boost = 21
+upgrade_time_seconds = 6863
+upgrade_cost_wood = 2800
+upgrade_cost_stone = 2100
+upgrade_cost_iron = 1634
+upgrade_cost_food = 1400
+upgrade_cost_gold = 15
+population_cost = 125
+
+[[building.government.levels]]
+level = 9
+build_speed_boost = 26
+upgrade_time_seconds = 9470
+upgrade_cost_wood = 4162
+upgrade_cost_stone = 3121
+upgrade_cost_iron = 2428
+upgrade_cost_food = 2081
+upgrade_cost_gold = 20
+population_cost = 163
+
+[[building.government.levels]]
+level = 10
+build_speed_boost = 31
+upgrade_time_seconds = 13069
+upgrade_cost_wood = 6463
+upgrade_cost_stone = 4847
+upgrade_cost_iron = 3770
+upgrade_cost_food = 3231
+upgrade_cost_gold = 50
+population_cost = 212
+
+[[building.government.levels]]
+level = 11
+build_speed_boost = 37
+upgrade_time_seconds = 18035
+upgrade_cost_wood = 10488
+upgrade_cost_stone = 7866
+upgrade_cost_iron = 6118
+upgrade_cost_food = 5244
+upgrade_cost_gold = 100
+population_cost = 276
+
+[[building.government.levels]]
+level = 12
+build_speed_boost = 43
+upgrade_time_seconds = 24889
+upgrade_cost_wood = 17787
+upgrade_cost_stone = 13340
+upgrade_cost_iron = 10376
+upgrade_cost_food = 8894
+upgrade_cost_gold = 150
+population_cost = 358
+
+[[building.government.levels]]
+level = 13
+build_speed_boost = 50
+upgrade_time_seconds = 34346
+upgrade_cost_wood = 31522
+upgrade_cost_stone = 23642
+upgrade_cost_iron = 18388
+upgrade_cost_food = 15761
+upgrade_cost_gold = 200
+population_cost = 466
+
+[[building.government.levels]]
+level = 14
+build_speed_boost = 57
+upgrade_time_seconds = 47398
+upgrade_cost_wood = 58377
+upgrade_cost_stone = 43783
+upgrade_cost_iron = 34054
+upgrade_cost_food = 29189
+upgrade_cost_gold = 300
+population_cost = 606
+
+[[building.government.levels]]
+level = 15
+build_speed_boost = 65
+upgrade_time_seconds = 65409
+upgrade_cost_wood = 112977
+upgrade_cost_stone = 84733
+upgrade_cost_iron = 65903
+upgrade_cost_food = 56488
+upgrade_cost_gold = 400
+population_cost = 787
+
+[[building.government.levels]]
+level = 16
+build_speed_boost = 73
+upgrade_time_seconds = 90265
+upgrade_cost_wood = 228481
+upgrade_cost_stone = 171361
+upgrade_cost_iron = 133281
+upgrade_cost_food = 114241
+upgrade_cost_gold = 500
+population_cost = 1024
+
+[[building.government.levels]]
+level = 17
+build_speed_boost = 82
+upgrade_time_seconds = 124566
+upgrade_cost_wood = 482867
+upgrade_cost_stone = 362150
+upgrade_cost_iron = 281672
+upgrade_cost_food = 241433
+upgrade_cost_gold = 1000
+population_cost = 1331
+
+[[building.government.levels]]
+level = 18
+build_speed_boost = 91
+upgrade_time_seconds = 171900
+upgrade_cost_wood = 1066401
+upgrade_cost_stone = 799801
+upgrade_cost_iron = 622067
+upgrade_cost_food = 533201
+upgrade_cost_gold = 1500
+population_cost = 1730
+
+[[building.government.levels]]
+level = 19
+build_speed_boost = 100
+upgrade_time_seconds = 237223
+upgrade_cost_wood = 2461105
+upgrade_cost_stone = 1845829
+upgrade_cost_iron = 1435645
+upgrade_cost_food = 1230553
+upgrade_cost_gold = 2000
+population_cost = 2249
+
+[[building.government.levels]]
+level = 20
+build_speed_boost = 110
+upgrade_time_seconds = 327367
+upgrade_cost_wood = 5935481
+upgrade_cost_stone = 4451611
+upgrade_cost_iron = 3462364
+upgrade_cost_food = 2967741
+upgrade_cost_gold = 3000
+population_cost = 2924
+
+# ========== 兵营 (Barracks) ==========
+[building.barracks]
+initial_level = 1
+max_level = 20
+
+[[building.barracks.levels]]
+level = 1
+recruit_speed_boost = 2
+upgrade_time_seconds = 480
+upgrade_cost_wood = 400
+upgrade_cost_stone = 250
+upgrade_cost_iron = 200
+upgrade_cost_food = 150
+upgrade_cost_gold = 0
+population_cost = 15
+
+[[building.barracks.levels]]
+level = 2
+recruit_speed_boost = 3
+upgrade_time_seconds = 653
+upgrade_cost_wood = 433
+upgrade_cost_stone = 270
+upgrade_cost_iron = 216
+upgrade_cost_food = 162
+upgrade_cost_gold = 0
+population_cost = 19
+
+[[building.barracks.levels]]
+level = 3
+recruit_speed_boost = 4
+upgrade_time_seconds = 888
+upgrade_cost_wood = 487
+upgrade_cost_stone = 304
+upgrade_cost_iron = 243
+upgrade_cost_food = 182
+upgrade_cost_gold = 0
+population_cost = 24
+
+[[building.barracks.levels]]
+level = 4
+recruit_speed_boost = 5
+upgrade_time_seconds = 1207
+upgrade_cost_wood = 569
+upgrade_cost_stone = 356
+upgrade_cost_iron = 285
+upgrade_cost_food = 213
+upgrade_cost_gold = 0
+population_cost = 30
+
+[[building.barracks.levels]]
+level = 5
+recruit_speed_boost = 7
+upgrade_time_seconds = 1642
+upgrade_cost_wood = 693
+upgrade_cost_stone = 433
+upgrade_cost_iron = 346
+upgrade_cost_food = 260
+upgrade_cost_gold = 0
+population_cost = 38
+
+[[building.barracks.levels]]
+level = 6
+recruit_speed_boost = 9
+upgrade_time_seconds = 2233
+upgrade_cost_wood = 876
+upgrade_cost_stone = 548
+upgrade_cost_iron = 438
+upgrade_cost_food = 329
+upgrade_cost_gold = 5
+population_cost = 48
+
+[[building.barracks.levels]]
+level = 7
+recruit_speed_boost = 11
+upgrade_time_seconds = 3037
+upgrade_cost_wood = 1153
+upgrade_cost_stone = 721
+upgrade_cost_iron = 577
+upgrade_cost_food = 433
+upgrade_cost_gold = 10
+population_cost = 60
+
+[[building.barracks.levels]]
+level = 8
+recruit_speed_boost = 14
+upgrade_time_seconds = 4131
+upgrade_cost_wood = 1578
+upgrade_cost_stone = 987
+upgrade_cost_iron = 789
+upgrade_cost_food = 592
+upgrade_cost_gold = 15
+population_cost = 76
+
+[[building.barracks.levels]]
+level = 9
+recruit_speed_boost = 17
+upgrade_time_seconds = 5618
+upgrade_cost_wood = 2247
+upgrade_cost_stone = 1404
+upgrade_cost_iron = 1123
+upgrade_cost_food = 842
+upgrade_cost_gold = 20
+population_cost = 95
+
+[[building.barracks.levels]]
+level = 10
+recruit_speed_boost = 20
+upgrade_time_seconds = 7640
+upgrade_cost_wood = 3326
+upgrade_cost_stone = 2078
+upgrade_cost_iron = 1663
+upgrade_cost_food = 1247
+upgrade_cost_gold = 50
+population_cost = 120
+
+[[building.barracks.levels]]
+level = 11
+recruit_speed_boost = 24
+upgrade_time_seconds = 10390
+upgrade_cost_wood = 5119
+upgrade_cost_stone = 3200
+upgrade_cost_iron = 2560
+upgrade_cost_food = 1920
+upgrade_cost_gold = 100
+population_cost = 151
+
+[[building.barracks.levels]]
+level = 12
+recruit_speed_boost = 28
+upgrade_time_seconds = 14131
+upgrade_cost_wood = 8196
+upgrade_cost_stone = 5123
+upgrade_cost_iron = 4098
+upgrade_cost_food = 3074
+upgrade_cost_gold = 150
+population_cost = 191
+
+[[building.barracks.levels]]
+level = 13
+recruit_speed_boost = 32
+upgrade_time_seconds = 19218
+upgrade_cost_wood = 13648
+upgrade_cost_stone = 8530
+upgrade_cost_iron = 6824
+upgrade_cost_food = 5118
+upgrade_cost_gold = 200
+population_cost = 240
+
+[[building.barracks.levels]]
+level = 14
+recruit_speed_boost = 37
+upgrade_time_seconds = 26136
+upgrade_cost_wood = 23633
+upgrade_cost_stone = 14771
+upgrade_cost_iron = 11817
+upgrade_cost_food = 8863
+upgrade_cost_gold = 300
+population_cost = 303
+
+[[building.barracks.levels]]
+level = 15
+recruit_speed_boost = 42
+upgrade_time_seconds = 35546
+upgrade_cost_wood = 42563
+upgrade_cost_stone = 26602
+upgrade_cost_iron = 21281
+upgrade_cost_food = 15961
+upgrade_cost_gold = 400
+population_cost = 381
+
+[[building.barracks.levels]]
+level = 16
+recruit_speed_boost = 47
+upgrade_time_seconds = 48342
+upgrade_cost_wood = 79719
+upgrade_cost_stone = 49824
+upgrade_cost_iron = 39859
+upgrade_cost_food = 29895
+upgrade_cost_gold = 500
+population_cost = 480
+
+[[building.barracks.levels]]
+level = 17
+recruit_speed_boost = 53
+upgrade_time_seconds = 65745
+upgrade_cost_wood = 155284
+upgrade_cost_stone = 97053
+upgrade_cost_iron = 77642
+upgrade_cost_food = 58232
+upgrade_cost_gold = 1000
+population_cost = 605
+
+[[building.barracks.levels]]
+level = 18
+recruit_speed_boost = 59
+upgrade_time_seconds = 89413
+upgrade_cost_wood = 314578
+upgrade_cost_stone = 196611
+upgrade_cost_iron = 157289
+upgrade_cost_food = 117967
+upgrade_cost_gold = 1500
+population_cost = 763
+
+[[building.barracks.levels]]
+level = 19
+recruit_speed_boost = 65
+upgrade_time_seconds = 121602
+upgrade_cost_wood = 662767
+upgrade_cost_stone = 414230
+upgrade_cost_iron = 331384
+upgrade_cost_food = 248538
+upgrade_cost_gold = 2000
+population_cost = 961
+
+[[building.barracks.levels]]
+level = 20
+recruit_speed_boost = 72
+upgrade_time_seconds = 165379
+upgrade_cost_wood = 1452205
+upgrade_cost_stone = 907628
+upgrade_cost_iron = 726102
+upgrade_cost_food = 544577
+upgrade_cost_gold = 3000
+population_cost = 1211
+

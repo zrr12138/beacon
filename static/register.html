@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>注册 - Beacon</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="https://unpkg.com/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .success {
+            color: green;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body x-data="registerApp()">
+    <h2>注册</h2>
+    
+    <div x-show="errorMsg" class="error" x-text="errorMsg"></div>
+    <div x-show="successMsg" class="success" x-text="successMsg"></div>
+    
+    <form @submit.prevent="handleRegister">
+        <div class="form-group">
+            <label for="username">用户名:</label>
+            <input type="text" id="username" x-model="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">密码:</label>
+            <input type="password" id="password" x-model="password" required>
+        </div>
+        <button type="submit" :disabled="loading">
+            <span x-show="!loading">注册</span>
+            <span x-show="loading">注册中...</span>
+        </button>
+    </form>
+    
+    <div class="back-link">
+        <a href="/">返回首页</a> | 
+        <a href="/login">已有账号？去登录</a>
+    </div>
+
+    <script>
+        function registerApp() {
+            return {
+                username: '',
+                password: '',
+                errorMsg: '',
+                successMsg: '',
+                loading: false,
+                
+                async handleRegister() {
+                    this.errorMsg = '';
+                    this.successMsg = '';
+                    this.loading = true;
+                    
+                    try {
+                        const formData = new FormData();
+                        formData.append('username', this.username);
+                        formData.append('password', this.password);
+                        
+                        const response = await fetch('/api/register', {
+                            method: 'POST',
+                            body: formData
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (response.ok) {
+                            this.successMsg = '注册成功！正在跳转到登录页...';
+                            setTimeout(() => {
+                                window.location.href = '/login';
+                            }, 1500);
+                        } else {
+                            this.errorMsg = data.error || '注册失败';
+                        }
+                    } catch (error) {
+                        this.errorMsg = '网络错误，请稍后重试';
+                        console.error('Register error:', error);
+                    } finally {
+                        this.loading = false;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
